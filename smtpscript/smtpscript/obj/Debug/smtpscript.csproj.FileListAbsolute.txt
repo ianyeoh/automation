@@ -1,0 +1,6 @@
+c:\users\ex1yeohia\onedrive - prysmian s.p.a\documents\visual studio 2015\Projects\smtpscript\smtpscript\bin\Debug\smtpscript.exe.config
+C:\Users\ex1yeohia\OneDrive - PRYSMIAN S.p.A\Documents\Visual Studio 2015\Projects\smtpscript\smtpscript\bin\Debug\smtpscript.exe
+C:\Users\ex1yeohia\OneDrive - PRYSMIAN S.p.A\Documents\Visual Studio 2015\Projects\smtpscript\smtpscript\bin\Debug\smtpscript.pdb
+C:\Users\ex1yeohia\OneDrive - PRYSMIAN S.p.A\Documents\Visual Studio 2015\Projects\smtpscript\smtpscript\obj\Debug\smtpscript.csprojResolveAssemblyReference.cache
+C:\Users\ex1yeohia\OneDrive - PRYSMIAN S.p.A\Documents\Visual Studio 2015\Projects\smtpscript\smtpscript\obj\Debug\smtpscript.exe
+C:\Users\ex1yeohia\OneDrive - PRYSMIAN S.p.A\Documents\Visual Studio 2015\Projects\smtpscript\smtpscript\obj\Debug\smtpscript.pdb
