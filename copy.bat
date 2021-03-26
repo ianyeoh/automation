@@ -25,18 +25,27 @@ SET "log_directory=.\%log_name%"
 IF EXIST %log_directory% (
 GOTO :continue
 ) ELSE (
-echo =================== > %log_directory%
+echo Errorlog for %0. Exit codes refer to robocopy exit codes. > %log_directory%
 )
 
 :continue
-echo Started %DATE% %TIME% >> %log_directory%
-robocopy %source% %destination% %include_file% /XF %exclude_file% %0 %log_name% %exclude_if% /MOV /R:10 /W:5 /njh /njs /ndl /np /xx >> %log_directory%
-echo Completed %DATE% %TIME% Exit code: %ERRORLEVEL% >> %log_directory%
+SET "start_date=%DATE%"
+SET "start_time=%TIME%"
 
-if %ERRORLEVEL% GEQ 8 echo Error has occurred, check exit code for more information. >> %log_directory%
-if %ERRORLEVEL% EQU 3 echo One or more files moved successfully. >> %log_directory%
-if %ERRORLEVEL% EQU 2 echo No files moved. >> %log_directory%
-if %ERRORLEVEL% EQU 1 echo One or more files moved successfully. >> %log_directory%
-if %ERRORLEVEL% EQU 0 echo No files moved. >> %log_directory%
-echo =================== >> %log_directory%
+robocopy %source% %destination% %include_file% /XF %exclude_file% %0 %log_name% %exclude_if% /MOV /R:10 /W:5 /njh /njs /ndl /np /nc /ns /ts /xx >> %log_directory%
+
+if %ERRORLEVEL% GEQ 8 (
+	echo 			 	Started: %start_date%-%start_time% Completed: %DATE%-%TIME% Exit code: %ERRORLEVEL% >> %log_directory%
+	echo 				Error has occurred, check exit code for more information. >> %log_directory%
+)
+
+SET "copied=0"
+if %ERRORLEVEL% EQU 5 SET "copied=1"
+if %ERRORLEVEL% EQU 4 SET "copied=1"
+if %ERRORLEVEL% EQU 3 SET "copied=1"
+if %ERRORLEVEL% EQU 1 SET "copied=1"
+if "%copied%" == "1" (
+	echo 			 	Started: %start_date%-%start_time% Completed: %DATE%-%TIME% Exit code: %ERRORLEVEL% >> %log_directory%
+	echo 				One or more files moved successfully. >> %log_directory%
+)
 EXIT /B
