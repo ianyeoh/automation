@@ -1,2 +1,2 @@
-# ftpscripts
-scripts written to run on an ftp server to automate error logging and reporting, mainly using batch and c#
+# automation
+scripts written to run on Windows 10 to automate error logging and reporting, mainly using batch and c#
