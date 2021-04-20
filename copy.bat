@@ -30,18 +30,18 @@ SET "log_dir=.\%log_name%"
 SET "start_date=%DATE%"
 SET "start_time=%TIME%"
 
-:: In the case temp file exists prior to running the file, delete it (NOTE: this is unexpected behaviour, as the script deletes the temp file before closing).
+:: In the case the temp file exists prior to running the file, delete it 
+:: NOTE: this is unexpected behaviour, as the temp file should only ever exist within the lifecycle of the script.
 if EXIST %tmp_dir% (
 	del %tmp_dir%
 )
 
 :: Runs copy command, creates and stores a list of copied files in temp file.
-
 robocopy %source% %destination% %include_file% /XF %exclude_file% %0 %log_name% %exclude_if% /MOV /R:10 /W:5 /njh /njs /ndl /np /nc /ns /ts /xx > %tmp_dir%
 
 :: Writes to log file if robocopy returns errors.
 if %ERRORLEVEL% GEQ 8 (
-	:: Creates log file if not already present
+	:: Creates log file if not already present.
 	if NOT EXIST %log_dir% (
 		echo. 2> %log_dir%
 	)
